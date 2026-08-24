@@ -1,0 +1,8 @@
+{
+  "name": "quality-guardian",
+  "version": "1.0.0",
+  "description": "Stop hooks, verification skills, and CI workflows for code quality.",
+  "author": {
+    "name": "Usama Javed"
+  }
+}

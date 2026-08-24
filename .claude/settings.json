@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python .claude/hooks/block_src_edit.py"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "default",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python .claude/hooks/run_tests.py"
+          }
+        ]
+      }
+    ]
+  }
+}

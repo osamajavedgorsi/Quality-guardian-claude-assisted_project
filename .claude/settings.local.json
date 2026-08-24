@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(flake8 *)",
+      "PowerShell(pytest *)"
+    ]
+  }
+}

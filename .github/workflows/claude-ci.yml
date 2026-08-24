@@ -1,0 +1,25 @@
+name: Claude Quality Guardian
+
+on:
+  pull_request:
+  issue_comment:
+    types: [created]
+
+jobs:
+  claude-run:
+    if: contains(github.event.comment.body, '@claude')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install flake8 pytest
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          trigger_phrase: "@claude"
+          prompt: ${{ github.event.comment.body }}
+          claude_args: "--max-turns 3 --permission-mode auto --allowed-tools Edit,Bash,Read"
