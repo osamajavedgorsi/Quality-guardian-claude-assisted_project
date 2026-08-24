@@ -6,7 +6,7 @@ import os
 input_data = json.loads(sys.stdin.read())
 tool_input = input_data.get('tool_input', {})
 
-# Check if the edit targets a file inside src/
+# Check if the edit targets a file Claude.md
 file_path = tool_input.get('file_path', '')
 if 'CLAUDE.md' in file_path.replace('\\', '/'):
     # Block the edit
@@ -18,7 +18,7 @@ if 'CLAUDE.md' in file_path.replace('\\', '/'):
         }
     }
     print(json.dumps(response))
-    sys.exit(0)  # Exit 0 with JSON means "block"
+    sys.exit(2)  # Exit 0 with JSON means "block"
 
 # Allow the edit
 response = {
